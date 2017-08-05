@@ -110,14 +110,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Share_Loader.cpp" />
+    <ClCompile Include="OpenGLLoader.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShaderLoader.cpp" />
+    <ClCompile Include="SquareRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fragment_Shader.glsl">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </DeploymentContent>
+    </None>
     <None Include="packages.config" />
+    <None Include="Vertex_Shader.glsl">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </DeploymentContent>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader_Loader.h" />
+    <ClInclude Include="OpenGLLoader.h" />
+    <ClInclude Include="IRenderer.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="SquareRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

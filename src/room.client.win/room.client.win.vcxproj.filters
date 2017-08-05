@@ -19,21 +19,60 @@
     <Filter Include="Header Files\core">
       <UniqueIdentifier>{dd1d4988-7fa7-4b78-8559-6c1a3f282c2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\shaders">
+      <UniqueIdentifier>{836feee5-6987-4907-8450-01169bd17d08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\renderers">
+      <UniqueIdentifier>{685c47af-f188-40c9-9820-61c421e4fef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderers">
+      <UniqueIdentifier>{f91cc759-9d63-4952-b686-2522cf5fde11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Share_Loader.cpp">
+    <ClCompile Include="SquareRenderer.cpp">
+      <Filter>Source Files\renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoader.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLLoader.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="IRenderer.cpp">
+      <Filter>Source Files\renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Fragment_Shader.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="Vertex_Shader.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader_Loader.h">
+    <ClInclude Include="SquareRenderer.h">
+      <Filter>Header Files\renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLLoader.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderer.h">
+      <Filter>Header Files\renderers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

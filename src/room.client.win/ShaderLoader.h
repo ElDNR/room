@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef _SHADERLOADER_H_
+#define _SHADERLOADER_H_
+
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 #include <iostream>
@@ -7,7 +10,7 @@
 namespace core
 {
 
-	class Shader_Loader
+	class ShaderLoader
 	{
 
 	private:
@@ -19,11 +22,13 @@ namespace core
 
 	public:
 
-		Shader_Loader(void);
+		ShaderLoader(void);
 
-		~Shader_Loader(void);
+		~ShaderLoader(void);
 
 		GLuint CreateProgram(char* vertexShaderFilename, char* fragmentShaderFilename);
 	};
 
 }
+
+#endif // !_SHADERLOADER_H_
