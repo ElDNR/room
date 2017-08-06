@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef _SCENEMANAGER_H_
-#define _SCENEMANAGER_H_
-
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,13 +11,14 @@
 
 #include "IRenderer.h"
 
-using namespace renderers;
+using namespace room::client::win::renderers;
 
-namespace core
+namespace room::client::win::managers
 {
 
 	class SceneManager
 	{
+
 	private:
 
 		std::vector<IRenderer*> _renderers;
@@ -29,12 +27,15 @@ namespace core
 		SceneManager();
 		~SceneManager();
 
-		void RenderScene(void);
+		void ProcessDisplay(void);
+		void ProcessKeyboard(unsigned char key, int x, int y);
+		void ProcessMouse(int button, int state, int x, int y);
+		void ProcessMotion(int x, int y);
+		void ProcessIdle(void);
 
 		bool AddRenderer(IRenderer* renderer);
 		bool RemoveRenderer(IRenderer* renderer);
+
 	};
 
 }
-
-#endif // !_SCENEMANAGER_H_

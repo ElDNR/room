@@ -1,8 +1,10 @@
-#include "OpenGLLoader.h"
+#include "Core.h"
+#include "Managers.h"
 
-using namespace core;
+using namespace room::client::win::core;
+using namespace room::client::win::managers;
 
-OpenGLLoader _loader;
+OpenGLManager _openGLManager;
 void OpenGLLoader_RenderCallback(void);
 
 /**
@@ -11,9 +13,9 @@ void OpenGLLoader_RenderCallback(void);
 *
 */
 int main(int argc, char **argv) {
-	return _loader.Load(argc, argv, OpenGLLoader_RenderCallback);
+	return _openGLManager.Load(argc, argv, OpenGLLoader_RenderCallback);
 }
 
 void OpenGLLoader_RenderCallback() {
-	_loader.DisplayFunc();
+	_openGLManager.DisplayFunc();
 }

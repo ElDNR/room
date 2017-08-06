@@ -1,12 +1,12 @@
-#include "OpenGLLoader.h"
+#include "OpenGLManager.h"
 
-using namespace core;
+using namespace room::client::win::managers;
 
-OpenGLLoader::OpenGLLoader() {}
+OpenGLManager::OpenGLManager() {}
 
-OpenGLLoader::~OpenGLLoader() {}
+OpenGLManager::~OpenGLManager() {}
 
-int OpenGLLoader::Load(int argc, char **argv, void(*renderCallback)(void)) {
+int OpenGLManager::Load(int argc, char **argv, void(*renderCallback)(void)) {
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -53,11 +53,71 @@ int OpenGLLoader::Load(int argc, char **argv, void(*renderCallback)(void)) {
 	return 0;
 }
 
-bool OpenGLLoader::DisplayFunc() {
+bool OpenGLManager::DisplayFunc() {
 	bool result;
 
 	if (_openGLInitialized) {
-		_sceneManager.RenderScene();
+		_sceneManager.ProcessDisplay();
+
+		result = true;
+	}
+	else {
+		result = false;
+	}
+
+	return result;
+}
+
+bool OpenGLManager::KeyboardFunc(unsigned char key, int x, int y) {
+	bool result;
+
+	if (_openGLInitialized) {
+		_sceneManager.ProcessKeyboard(key, x, y);
+
+		result = true;
+	}
+	else {
+		result = false;
+	}
+
+	return result;
+}
+
+bool OpenGLManager::MouseFunc(int button, int state, int x, int y) {
+	bool result;
+
+	if (_openGLInitialized) {
+		_sceneManager.ProcessMouse(button, state, x, y);
+
+		result = true;
+	}
+	else {
+		result = false;
+	}
+
+	return result;
+}
+
+bool OpenGLManager::MotionFunc(int x, int y) {
+	bool result;
+
+	if (_openGLInitialized) {
+		_sceneManager.ProcessMotion(x, y);
+
+		result = true;
+	}
+	else {
+		result = false;
+	}
+
+	return result;
+}
+
+bool OpenGLManager::IdleFunc(void) {
+	bool result;
+
+	if (_openGLInitialized) {
+		_sceneManager.ProcessIdle();
 
 		result = true;
 	}

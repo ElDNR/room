@@ -74,6 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,7 +113,9 @@
   <ItemGroup>
     <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OpenGLLoader.cpp" />
+    <ClCompile Include="OpenGLEvents.cpp" />
+    <ClCompile Include="OpenGLManager.cpp" />
+    <ClCompile Include="OpenGLOptions.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="SquareRenderer.cpp" />
@@ -137,10 +140,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OpenGLLoader.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Managers.h" />
+    <ClInclude Include="OpenGLEvents.h" />
+    <ClInclude Include="OpenGLManager.h" />
     <ClInclude Include="IRenderer.h" />
+    <ClInclude Include="OpenGLOptions.h" />
+    <ClInclude Include="Renderers.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="Shaders.h" />
     <ClInclude Include="SquareRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

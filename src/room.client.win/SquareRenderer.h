@@ -8,21 +8,30 @@
 
 #include "IRenderer.h"
 
-namespace renderers
+namespace room::client::win::renderers
 {
 
-	class SquareRenderer : public IRenderer {
+	class SquareRenderer : public IRenderer
+	{
+
 	private:
-		int getId(void) const;
+
+		GLfloat _red;
+		GLfloat _gree;
+		GLfloat _blue;
+
+		int GetId(void) const;
 	public:
+
 		SquareRenderer(void);
 		~SquareRenderer(void);
 
-		void displayFunc(void);
-		void keyboardFunc(unsigned char key, int x, int y);
-		void mouseFunc(int button, int state, int x, int y);
-		void motionFunc(int x, int y);
-		void idleFunc(void);
+		void DisplayFunc(void);
+		void KeyboardFunc(unsigned char key, int x, int y);
+		void MouseFunc(int button, int state, int x, int y);
+		void MotionFunc(int x, int y);
+		void IdleFunc(void);
+
 	};
 
 }

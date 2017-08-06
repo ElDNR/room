@@ -1,9 +1,10 @@
-#include "ShaderLoader.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 
-using namespace core;
+#include "Shaders.h"
+
+using namespace room::client::win::shaders;
 
 ShaderLoader::ShaderLoader(void) {}
 ShaderLoader::~ShaderLoader(void) {}

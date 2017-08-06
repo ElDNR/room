@@ -3,17 +3,17 @@
 #ifndef _RENDERER_H_
 #define _RENDERER_H_
 
-namespace renderers
+namespace room::client::win::renderers
 {
 
 	class IRenderer {
 	public:
-		virtual int getId(void) const = 0;
-		virtual void displayFunc(void) = 0;
-		virtual void keyboardFunc(unsigned char key, int x, int y) = 0;
-		virtual void mouseFunc(int button, int state, int x, int y) = 0;
-		virtual void motionFunc(int x, int y) = 0;
-		virtual void idleFunc(void) = 0;
+		virtual int GetId(void) const = 0;
+		virtual void DisplayFunc(void) = 0;
+		virtual void KeyboardFunc(unsigned char key, int x, int y) = 0;
+		virtual void MouseFunc(int button, int state, int x, int y) = 0;
+		virtual void MotionFunc(int x, int y) = 0;
+		virtual void IdleFunc(void) = 0;
 	};
 
 	bool operator==(const IRenderer& lhs, const IRenderer& rhs);

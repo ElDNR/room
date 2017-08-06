@@ -28,6 +28,18 @@
     <Filter Include="Source Files\renderers">
       <UniqueIdentifier>{f91cc759-9d63-4952-b686-2522cf5fde11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\managers">
+      <UniqueIdentifier>{dae0710d-0af8-4b7f-8a6d-75b8c0556e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\managers">
+      <UniqueIdentifier>{7791aec1-0cd1-4c40-a42a-1958e60010f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\shaders">
+      <UniqueIdentifier>{78cf3e99-b2fe-4d51-be3a-84fc3e7287f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\shaders">
+      <UniqueIdentifier>{4c3573ee-d30a-43c4-958b-7760ba9448a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,42 +48,66 @@
     <ClCompile Include="SquareRenderer.cpp">
       <Filter>Source Files\renderers</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderLoader.cpp">
+    <ClCompile Include="IRenderer.cpp">
+      <Filter>Source Files\renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLEvents.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGlOptions.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>Source Files\core</Filter>
+      <Filter>Source Files\managers</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLLoader.cpp">
-      <Filter>Source Files\core</Filter>
+    <ClCompile Include="ShaderLoader.cpp">
+      <Filter>Source Files\shaders</Filter>
     </ClCompile>
-    <ClCompile Include="IRenderer.cpp">
-      <Filter>Source Files\renderers</Filter>
+    <ClCompile Include="OpenGLManager.cpp">
+      <Filter>Source Files\managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Fragment_Shader.glsl">
-      <Filter>Source Files\shaders</Filter>
+      <Filter>Resource Files\shaders</Filter>
     </None>
     <None Include="Vertex_Shader.glsl">
-      <Filter>Source Files\shaders</Filter>
+      <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SquareRenderer.h">
       <Filter>Header Files\renderers</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderLoader.h">
+    <ClInclude Include="IRenderer.h">
+      <Filter>Header Files\renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLEvents.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGlOptions.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>Header Files\core</Filter>
+      <Filter>Header Files\managers</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLLoader.h">
-      <Filter>Header Files\core</Filter>
+    <ClInclude Include="ShaderLoader.h">
+      <Filter>Header Files\shaders</Filter>
     </ClInclude>
-    <ClInclude Include="IRenderer.h">
+    <ClInclude Include="OpenGLManager.h">
+      <Filter>Header Files\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Managers.h">
+      <Filter>Header Files\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders.h">
+      <Filter>Header Files\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderers.h">
       <Filter>Header Files\renderers</Filter>
     </ClInclude>
   </ItemGroup>

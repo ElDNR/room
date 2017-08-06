@@ -1,15 +1,15 @@
-#include "SquareRenderer.h"
+#include "Renderers.h"
 
-using namespace renderers;
+using namespace room::client::win::renderers;
 
-int SquareRenderer::getId() const {
+int SquareRenderer::GetId() const {
 	return 4;
 }
 
 SquareRenderer::SquareRenderer(void) {}
 SquareRenderer::~SquareRenderer(void) {}
 
-void SquareRenderer::displayFunc(void)
+void SquareRenderer::DisplayFunc(void)
 {
 	/*  clear all pixels  */
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -28,22 +28,22 @@ void SquareRenderer::displayFunc(void)
 	glEnd();
 }
 
-void SquareRenderer::keyboardFunc(unsigned char key, int x, int y)
+void SquareRenderer::KeyboardFunc(unsigned char key, int x, int y)
 {
 
 }
 
-void SquareRenderer::mouseFunc(int button, int state, int x, int y)
+void SquareRenderer::MouseFunc(int button, int state, int x, int y)
 {
 
 }
 
-void SquareRenderer::motionFunc(int x, int y)
+void SquareRenderer::MotionFunc(int x, int y)
 {
 
 }
 
-void SquareRenderer::idleFunc(void)
+void SquareRenderer::IdleFunc(void)
 {
 
 }

@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef _OPENGLLOADER_H_
-#define _OPENGLLOADER_H_
-
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,25 +11,30 @@
 
 #include "SceneManager.h"
 
-namespace core {
+namespace room::client::win::managers
+{
 
-	class OpenGLLoader
+	class OpenGLManager
 	{
+
 	private:
 
 		bool _openGLInitialized;
 		SceneManager _sceneManager;
 
 	public:
-		OpenGLLoader();
-		~OpenGLLoader();
+
+		OpenGLManager();
+		~OpenGLManager();
 
 		int Load(int argc, char **argv, void(*renderCallback)(void));
 
 		bool DisplayFunc(void);
+		bool KeyboardFunc(unsigned char key, int x, int y);
+		bool MouseFunc(int button, int state, int x, int y);
+		bool MotionFunc(int x, int y);
+		bool IdleFunc(void);
 
 	};
 
 }
-
-#endif // !_OPENGLLOADER_H_

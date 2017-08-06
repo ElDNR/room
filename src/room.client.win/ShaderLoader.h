@@ -1,13 +1,10 @@
 #pragma once
 
-#ifndef _SHADERLOADER_H_
-#define _SHADERLOADER_H_
-
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 #include <iostream>
 
-namespace core
+namespace room::client::win::shaders
 {
 
 	class ShaderLoader
@@ -27,8 +24,7 @@ namespace core
 		~ShaderLoader(void);
 
 		GLuint CreateProgram(char* vertexShaderFilename, char* fragmentShaderFilename);
+
 	};
 
 }
-
-#endif // !_SHADERLOADER_H_

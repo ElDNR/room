@@ -1,7 +1,8 @@
-#include "SceneManager.h"
+#include "Renderers.h"
+#include "Managers.h"
 
-using namespace core;
-using namespace renderers;
+using namespace room::client::win::renderers;
+using namespace room::client::win::managers;
 
 SceneManager::SceneManager() {
 }
@@ -10,7 +11,7 @@ SceneManager::~SceneManager() {
 	_renderers.clear();
 }
 
-void SceneManager::RenderScene() {
+void SceneManager::ProcessDisplay() {
 	std::cout << "-- Begin Render Scene" << std::endl;
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -19,12 +20,44 @@ void SceneManager::RenderScene() {
 	for (std::vector<IRenderer*>::iterator iterator = _renderers.begin(),
 		iteratorEnd = _renderers.end();
 		iterator != iteratorEnd; iterator++) {
-		(*iterator)->displayFunc();
+		(*iterator)->DisplayFunc();
 	}
 
 	glutSwapBuffers();
 
 	std::cout << "-- End Render Scene" << std::endl;
+}
+
+void SceneManager::ProcessKeyboard(unsigned char key, int x, int y) {
+	for (std::vector<IRenderer*>::iterator iterator = _renderers.begin(),
+		iteratorEnd = _renderers.end();
+		iterator != iteratorEnd; iterator++) {
+		(*iterator)->KeyboardFunc(key, x, y);
+	}
+}
+
+void SceneManager::ProcessMouse(int button, int state, int x, int y) {
+	for (std::vector<IRenderer*>::iterator iterator = _renderers.begin(),
+		iteratorEnd = _renderers.end();
+		iterator != iteratorEnd; iterator++) {
+		(*iterator)->MouseFunc(button, state, x, y);
+	}
+}
+
+void SceneManager::ProcessMotion(int x, int y) {
+	for (std::vector<IRenderer*>::iterator iterator = _renderers.begin(),
+		iteratorEnd = _renderers.end();
+		iterator != iteratorEnd; iterator++) {
+		(*iterator)->MotionFunc(x, y);
+	}
+}
+
+void SceneManager::ProcessIdle() {
+	for (std::vector<IRenderer*>::iterator iterator = _renderers.begin(),
+		iteratorEnd = _renderers.end();
+		iterator != iteratorEnd; iterator++) {
+		(*iterator)->IdleFunc();
+	}
 }
 
 bool SceneManager::AddRenderer(IRenderer* renderer) {
@@ -33,7 +66,7 @@ bool SceneManager::AddRenderer(IRenderer* renderer) {
 		iteratorEnd = _renderers.end();
 
 	for (; iterator != iteratorEnd; iterator++) {
-		if ((*iterator)->getId() == renderer->getId()) {
+		if ((*iterator)->GetId() == renderer->GetId()) {
 			result = false;
 
 			break;
@@ -44,7 +77,7 @@ bool SceneManager::AddRenderer(IRenderer* renderer) {
 		_renderers.push_back(renderer);
 	}
 
-	return true;
+	return result;
 }
 
 bool SceneManager::RemoveRenderer(IRenderer* renderer) {
@@ -53,7 +86,7 @@ bool SceneManager::RemoveRenderer(IRenderer* renderer) {
 		iteratorEnd = _renderers.end();
 
 	for (; iterator != iteratorEnd; iterator++) {
-		if ((*iterator)->getId() == renderer->getId()) {
+		if ((*iterator)->GetId() == renderer->GetId()) {
 			result = true;
 
 			break;
