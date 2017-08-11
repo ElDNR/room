@@ -13,7 +13,15 @@ void OpenGLLoader_RenderCallback(void);
 *
 */
 int main(int argc, char **argv) {
-	return _openGLManager.Load(argc, argv, OpenGLLoader_RenderCallback);
+	OpenGLEvents openGLEvents;
+	OpenGLOptions* openGLOptions = new OpenGLOptions(&argc, argv);
+
+	openGLEvents.setDisplayFuncEventHandler(OpenGLLoader_RenderCallback);
+
+	openGLOptions->SetOpenGLEvents(openGLEvents);
+	openGLOptions->AddDefaultRenderer(new SquareRenderer());
+
+	return _openGLManager.Load(openGLOptions);
 }
 
 void OpenGLLoader_RenderCallback() {

@@ -6,15 +6,13 @@ namespace room::client::win::core
 	class OpenGLEvents
 	{
 
-	private:
+	public:
 
 		void(*_displayFunc)(void);
 		void(*_keyboardFunc)(void);
 		void(*_mouseFunc)(void);
 		void(*_motionFunc)(void);
 		void(*_idleFunc)(void);
-
-	public:
 
 		OpenGLEvents();
 		~OpenGLEvents();

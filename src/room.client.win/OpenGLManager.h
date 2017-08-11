@@ -9,7 +9,10 @@
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 
+#include "Core.h"
 #include "SceneManager.h"
+
+using namespace room::client::win::core;
 
 namespace room::client::win::managers
 {
@@ -27,7 +30,7 @@ namespace room::client::win::managers
 		OpenGLManager();
 		~OpenGLManager();
 
-		int Load(int argc, char **argv, void(*renderCallback)(void));
+		int Load(OpenGLOptions* openGLOptions);
 
 		bool DisplayFunc(void);
 		bool KeyboardFunc(unsigned char key, int x, int y);

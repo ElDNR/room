@@ -1,13 +1,24 @@
+#include "Core.h"
 #include "OpenGLManager.h"
 
+using namespace room::client::win::core;
 using namespace room::client::win::managers;
 
 OpenGLManager::OpenGLManager() {}
 
 OpenGLManager::~OpenGLManager() {}
 
-int OpenGLManager::Load(int argc, char **argv, void(*renderCallback)(void)) {
-	glutInit(&argc, argv);
+int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
+	if (NULL == openGLOptions || NULL == openGLOptions->GetArgC() ||
+		NULL == openGLOptions->GetArgV()) {
+		std::cout << "Missing OpenGL Options!";
+
+		return -1;
+	}
+
+	_sceneManager.SetOpenGLOptions(openGLOptions);
+
+	glutInit(openGLOptions->GetArgC(), openGLOptions->GetArgV());
 
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100, 100);
@@ -24,6 +35,8 @@ int OpenGLManager::Load(int argc, char **argv, void(*renderCallback)(void)) {
 	if (glewStatus == GLEW_OK && isSupported) {
 		std::cout << " GLEW Version is 1.1\r\n ";
 
+		OpenGLEvents openGLEvents = openGLOptions->GetOpenGLEvents();
+
 		glEnable(GL_DEPTH_TEST);
 
 		/*  select clearing (background) color */
@@ -37,7 +50,7 @@ int OpenGLManager::Load(int argc, char **argv, void(*renderCallback)(void)) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 		//register callbacks
-		glutDisplayFunc(renderCallback);
+		glutDisplayFunc(openGLEvents._displayFunc);
 
 		_openGLInitialized = true;
 		glutMainLoop();
