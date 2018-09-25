@@ -1,4 +1,3 @@
-#include "Core.h"
 #include "OpenGLManager.h"
 
 using namespace room::client::win::core;
@@ -9,6 +8,11 @@ OpenGLManager::OpenGLManager() {}
 OpenGLManager::~OpenGLManager() {}
 
 int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
+	if (_openGLInitialized) {
+		std::cout << "OpenGL is already initialized!";
+		return -1;
+	}
+
 	if (NULL == openGLOptions || NULL == openGLOptions->GetArgC() ||
 		NULL == openGLOptions->GetArgV()) {
 		std::cout << "Missing OpenGL Options!";
@@ -16,7 +20,15 @@ int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
 		return -1;
 	}
 
-	_sceneManager.SetOpenGLOptions(openGLOptions);
+	_sceneManager = new SceneManager();
+
+	if (NULL == _sceneManager) {
+		std::cout << "Unable to create the scene manager!";
+
+		return -1;
+	}
+
+	_sceneManager->SetOpenGLOptions(openGLOptions);
 
 	glutInit(openGLOptions->GetArgC(), openGLOptions->GetArgV());
 
@@ -50,8 +62,31 @@ int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 		//register callbacks
-		glutDisplayFunc(openGLEvents._displayFunc);
+		if (NULL != openGLEvents.getDisplayFuncEventHandler()) {
+			glutDisplayFunc(openGLEvents.getDisplayFuncEventHandler());
+		}
 
+		if (NULL != openGLEvents.getIdleFuncEventHandler()) {
+			glutIdleFunc(openGLEvents.getIdleFuncEventHandler());
+		}
+
+		if (NULL != openGLEvents.getKeyboardFuncEventHandler()) {
+			glutKeyboardFunc(openGLEvents.getKeyboardFuncEventHandler());
+		}
+
+		if (NULL != openGLEvents.getMotionFuncEventHandler()) {
+			glutMotionFunc(openGLEvents.getMotionFuncEventHandler());
+		}
+
+		if (NULL != openGLEvents.getPassiveMotionFuncEventHandler()) {
+			glutPassiveMotionFunc(openGLEvents.getPassiveMotionFuncEventHandler());
+		}
+
+		if (NULL != openGLEvents.getMouseFuncEventHandler()) {
+			glutMouseFunc(openGLEvents.getMouseFuncEventHandler());
+		}
+
+		// delegate the main loop
 		_openGLInitialized = true;
 		glutMainLoop();
 	}
@@ -70,7 +105,7 @@ bool OpenGLManager::DisplayFunc() {
 	bool result;
 
 	if (_openGLInitialized) {
-		_sceneManager.ProcessDisplay();
+		_sceneManager->ProcessDisplay();
 
 		result = true;
 	}
@@ -85,7 +120,7 @@ bool OpenGLManager::KeyboardFunc(unsigned char key, int x, int y) {
 	bool result;
 
 	if (_openGLInitialized) {
-		_sceneManager.ProcessKeyboard(key, x, y);
+		_sceneManager->ProcessKeyboard(key, x, y);
 
 		result = true;
 	}
@@ -100,7 +135,7 @@ bool OpenGLManager::MouseFunc(int button, int state, int x, int y) {
 	bool result;
 
 	if (_openGLInitialized) {
-		_sceneManager.ProcessMouse(button, state, x, y);
+		_sceneManager->ProcessMouse(button, state, x, y);
 
 		result = true;
 	}
@@ -115,7 +150,7 @@ bool OpenGLManager::MotionFunc(int x, int y) {
 	bool result;
 
 	if (_openGLInitialized) {
-		_sceneManager.ProcessMotion(x, y);
+		_sceneManager->ProcessMotion(x, y);
 
 		result = true;
 	}
@@ -130,7 +165,7 @@ bool OpenGLManager::IdleFunc(void) {
 	bool result;
 
 	if (_openGLInitialized) {
-		_sceneManager.ProcessIdle();
+		_sceneManager->ProcessIdle();
 
 		result = true;
 	}

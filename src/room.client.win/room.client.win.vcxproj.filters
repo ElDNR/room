@@ -40,6 +40,12 @@
     <Filter Include="Resource Files\shaders">
       <UniqueIdentifier>{4c3573ee-d30a-43c4-958b-7760ba9448a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\attributes">
+      <UniqueIdentifier>{5e8d25fd-86a7-46af-97fe-0a34db53559f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\attributes">
+      <UniqueIdentifier>{afa3553b-5c05-4f67-9dda-9920bbde603e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +71,18 @@
     </ClCompile>
     <ClCompile Include="OpenGLManager.cpp">
       <Filter>Source Files\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseRenderer.cpp">
+      <Filter>Source Files\renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLColor.cpp">
+      <Filter>Source Files\attributes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLPosition.cpp">
+      <Filter>Source Files\attributes</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLUtils.cpp">
+      <Filter>Source Files\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +127,27 @@
     </ClInclude>
     <ClInclude Include="Renderers.h">
       <Filter>Header Files\renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseRenderer.h">
+      <Filter>Header Files\renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLColor.h">
+      <Filter>Header Files\attributes</Filter>
+    </ClInclude>
+    <ClInclude Include="Attributes.h">
+      <Filter>Header Files\attributes</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLPosition.h">
+      <Filter>Header Files\attributes</Filter>
+    </ClInclude>
+    <ClInclude Include="IOpenGLManager.h">
+      <Filter>Header Files\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ISceneManager.h">
+      <Filter>Header Files\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLUtils.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

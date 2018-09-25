@@ -3,6 +3,9 @@
 #ifndef _ROOMCLIENTWIN_MANAGERS_H_
 #define _ROOMCLIENTWIN_MANAGERS_H_
 
+#include "IOpenGLManager.h"
+#include "ISceneManager.h"
+
 #include "OpenGLManager.h"
 #include "SceneManager.h"
 

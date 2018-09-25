@@ -4,6 +4,7 @@
 #define _ROOMCLIENTWIN_RENDERERS_H_
 
 #include "IRenderer.h"
+#include "BaseRenderer.h"
 #include "SquareRenderer.h"
 
 #endif // !_ROOMCLIENTWIN_RENDERERS_H_

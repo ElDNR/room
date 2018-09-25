@@ -1,41 +1,47 @@
 #pragma once
 
+typedef void(*openGLEventsVoidFunc)(void);
+typedef void(*openGLEventsKeyboardFunc)(unsigned char key, int x, int y);
+typedef void(*openGLEventsMouseFunc)(int button, int state, int x, int y);
+typedef void(*openGLEventsMotionFunc)(int x, int y);
+
 namespace room::client::win::core
 {
 
 	class OpenGLEvents
 	{
 
-	public:
+	private:
 
 		void(*_displayFunc)(void);
-		void(*_keyboardFunc)(void);
-		void(*_mouseFunc)(void);
-		void(*_motionFunc)(void);
+		void(*_keyboardFunc)(unsigned char key, int x, int y);
+		void(*_mouseFunc)(int button, int state, int x, int y);
+		void(*_motionFunc)(int x, int y);
+		void(*_passiveMotionFunc)(int x, int y);
 		void(*_idleFunc)(void);
+
+	public:
 
 		OpenGLEvents();
 		~OpenGLEvents();
 
-		void setDisplayFuncEventHandler(void(*displayFunc)(void)) {
-			_displayFunc = displayFunc;
-		}
+		bool setDisplayFuncEventHandler(openGLEventsVoidFunc displayFunc);
+		openGLEventsVoidFunc getDisplayFuncEventHandler(void);
 
-		void setKeyboardFuncEventHandler(void(*keyboardFunc)(void)) {
-			_keyboardFunc = keyboardFunc;
-		}
+		bool setKeyboardFuncEventHandler(openGLEventsKeyboardFunc keyboardFunc);
+		openGLEventsKeyboardFunc getKeyboardFuncEventHandler(void);
 
-		void setMouseFuncEventHandler(void(*mouseFunc)(void)) {
-			_mouseFunc = mouseFunc;
-		}
+		bool setMouseFuncEventHandler(openGLEventsMouseFunc mouseFunc);
+		openGLEventsMouseFunc getMouseFuncEventHandler(void);
 
-		void setMotionFuncEventHandler(void(*motionFunc)(void)) {
-			_motionFunc = motionFunc;
-		}
+		bool setMotionFuncEventHandler(openGLEventsMotionFunc motionFunc);
+		openGLEventsMotionFunc getMotionFuncEventHandler(void);
 
-		void setIdleFuncEventHandler(void(*idleFunc)(void)) {
-			_idleFunc = idleFunc;
-		}
+		bool setPassiveMotionFuncEventHandler(openGLEventsMotionFunc passiveMotionFunc);
+		openGLEventsMotionFunc getPassiveMotionFuncEventHandler(void);
+
+		bool setIdleFuncEventHandler(openGLEventsVoidFunc idleFunc);
+		openGLEventsVoidFunc getIdleFuncEventHandler(void);
 
 	};
 

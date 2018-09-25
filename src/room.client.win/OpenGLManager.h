@@ -10,6 +10,8 @@
 #include "GL\freeglut.h"
 
 #include "Core.h"
+#include "IOpenGLManager.h"
+#include "ISceneManager.h"
 #include "SceneManager.h"
 
 using namespace room::client::win::core;
@@ -17,13 +19,13 @@ using namespace room::client::win::core;
 namespace room::client::win::managers
 {
 
-	class OpenGLManager
+	class OpenGLManager : public IOpenGLManager
 	{
 
 	private:
 
 		bool _openGLInitialized;
-		SceneManager _sceneManager;
+		ISceneManager* _sceneManager;
 
 	public:
 

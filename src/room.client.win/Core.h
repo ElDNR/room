@@ -8,5 +8,6 @@
 
 #include "OpenGLEvents.h"
 #include "OpenGLOptions.h"
+#include "OpenGLUtils.h"
 
 #endif // !_ROOMCLIENTWIN_CORE_H_

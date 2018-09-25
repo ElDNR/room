@@ -6,6 +6,8 @@
 namespace room::client::win::renderers
 {
 
+	/// <summary>Responsible for drawing individual graphical elements to the GLUT window.</summary>
+	/// <remarks></remarks>
 	class IRenderer {
 
 	public:

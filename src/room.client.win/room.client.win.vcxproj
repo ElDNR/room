@@ -111,11 +111,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseRenderer.cpp" />
     <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenGLColor.cpp" />
     <ClCompile Include="OpenGLEvents.cpp" />
     <ClCompile Include="OpenGLManager.cpp" />
     <ClCompile Include="OpenGLOptions.cpp" />
+    <ClCompile Include="OpenGLPosition.cpp" />
+    <ClCompile Include="OpenGLUtils.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="SquareRenderer.cpp" />
@@ -140,17 +144,29 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Attributes.h" />
+    <ClInclude Include="BaseRenderer.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="IOpenGLManager.h" />
+    <ClInclude Include="ISceneManager.h" />
+    <ClInclude Include="OpenGLColor.h" />
     <ClInclude Include="Managers.h" />
     <ClInclude Include="OpenGLEvents.h" />
     <ClInclude Include="OpenGLManager.h" />
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="OpenGLOptions.h" />
+    <ClInclude Include="OpenGLPosition.h" />
+    <ClInclude Include="OpenGLUtils.h" />
     <ClInclude Include="Renderers.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="SquareRenderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\room.client\room.client.vcxproj">
+      <Project>{bd315652-0b53-4167-b84f-c40af0583e2f}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

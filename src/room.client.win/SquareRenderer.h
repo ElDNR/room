@@ -11,22 +11,16 @@
 namespace room::client::win::renderers
 {
 
-	class SquareRenderer : public IRenderer
+	class SquareRenderer : public BaseRenderer
 	{
 
-	private:
-
-		GLfloat _red;
-		GLfloat _gree;
-		GLfloat _blue;
-
-		int GetId(void) const;
 	public:
 
 		SquareRenderer(void);
 		~SquareRenderer(void);
 
-		void DisplayFunc(void);
+		int GetId(void) const;
+		void Display(void);
 		void KeyboardFunc(unsigned char key, int x, int y);
 		void MouseFunc(int button, int state, int x, int y);
 		void MotionFunc(int x, int y);
