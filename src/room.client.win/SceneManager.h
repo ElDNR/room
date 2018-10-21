@@ -5,12 +5,17 @@
 #include <time.h>
 #include <fstream>
 
+#include <thread>
+#include <chrono>
+
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 
 #include "Core.h"
+#include "Attributes.h"
 #include "ISceneManager.h"
 #include "Renderers.h"
+#include "Utilities.h"
 
 using namespace room::client::win::core;
 using namespace room::client::win::renderers;
@@ -23,11 +28,13 @@ namespace room::client::win::managers
 
 	private:
 
+		bool _initialized;
+
 		OpenGLOptions* _openGLOptions;
 		GLfloat _backgroundRed, _backgroundGreen, _backgroundBlue, _backgroundAlpha;
 
 		time_t _lastIdleTime;
-		std::vector<IRenderer*> _renderers;
+		std::vector<IIntegerIdentifiable*> _renderers;
 
 		bool AddRenderer(IRenderer* renderer);
 		bool RemoveRenderer(IRenderer* renderer);
@@ -36,6 +43,7 @@ namespace room::client::win::managers
 		SceneManager();
 		~SceneManager();
 
+		bool Initialize(void);
 		void SetOpenGLOptions(OpenGLOptions* openGLOptions);
 
 		void ProcessDisplay(void);

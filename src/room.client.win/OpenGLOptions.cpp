@@ -1,6 +1,8 @@
 #include "Core.h"
 #include "Renderers.h"
+#include "Utilities.h"
 
+using namespace room::client::win;
 using namespace room::client::win::core;
 using namespace room::client::win::renderers;
 
@@ -35,23 +37,9 @@ OpenGLEvents OpenGLOptions::GetOpenGLEvents() {
 
 bool OpenGLOptions::AddDefaultRenderer(IRenderer* renderer)
 {
-	bool result = true;
-
-	for (int i = 0, size = _defaultRenderers.size(); i < size; i++) {
-		if (_defaultRenderers[i]->GetId() == renderer->GetId()) {
-			result = false;
-
-			break;
-		}
-	}
-
-	if (result) {
-		_defaultRenderers.push_back(renderer);
-	}
-
-	return result;
+	return utilities::AddIntegerIdentifiableToVector(&_defaultRenderers, renderer);
 }
 
-std::vector<IRenderer*> OpenGLOptions::GetDefaultRenderers() {
+std::vector<IIntegerIdentifiable*> OpenGLOptions::GetDefaultRenderers(void) {
 	return _defaultRenderers;
 }

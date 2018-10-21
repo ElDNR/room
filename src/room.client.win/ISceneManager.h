@@ -14,6 +14,7 @@ namespace room::client::win::managers
 
 		virtual void SetOpenGLOptions(OpenGLOptions* openGLOptions) = 0;
 
+		virtual bool Initialize(void) = 0;
 		virtual void ProcessDisplay(void) = 0;
 		virtual void ProcessKeyboard(unsigned char key, int x, int y) = 0;
 		virtual void ProcessMouse(int button, int state, int x, int y) = 0;

@@ -3,6 +3,7 @@
 #ifndef _ROOMCLIENTWIN_MANAGERS_H_
 #define _ROOMCLIENTWIN_MANAGERS_H_
 
+#include "ICollisionManager.h"
 #include "IOpenGLManager.h"
 #include "ISceneManager.h"
 

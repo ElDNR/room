@@ -9,13 +9,13 @@ OpenGLManager::~OpenGLManager() {}
 
 int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
 	if (_openGLInitialized) {
-		std::cout << "OpenGL is already initialized!";
+		std::cout << "OpenGL is already initialized!" << std::endl;
 		return -1;
 	}
 
 	if (NULL == openGLOptions || NULL == openGLOptions->GetArgC() ||
 		NULL == openGLOptions->GetArgV()) {
-		std::cout << "Missing OpenGL Options!";
+		std::cout << "Missing OpenGL Options!" << std::endl;
 
 		return -1;
 	}
@@ -23,7 +23,7 @@ int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
 	_sceneManager = new SceneManager();
 
 	if (NULL == _sceneManager) {
-		std::cout << "Unable to create the scene manager!";
+		std::cout << "Unable to create the scene manager!" << std::endl;
 
 		return -1;
 	}
@@ -86,8 +86,17 @@ int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
 			glutMouseFunc(openGLEvents.getMouseFuncEventHandler());
 		}
 
+		if (this->_sceneManager->Initialize()) {
+			this->_openGLInitialized = true;
+		}
+		else {
+			this->_openGLInitialized = false;
+
+			std::cout << "Failed to initialize renderings..." << std::endl;
+		}
+
 		// delegate the main loop
-		_openGLInitialized = true;
+
 		glutMainLoop();
 	}
 	else {

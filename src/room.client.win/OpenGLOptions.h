@@ -1,8 +1,10 @@
 #pragma once
 
-#include "IRenderer.h"
 #include "OpenGLEvents.h"
+#include "Attributes.h"
+#include "IRenderer.h"
 
+using namespace room::client::win::attributes;
 using namespace room::client::win::renderers;
 
 namespace room::client::win::core
@@ -17,7 +19,7 @@ namespace room::client::win::core
 		char** _argv;
 		OpenGLEvents _openGLEvents;
 
-		std::vector<IRenderer*> _defaultRenderers;
+		std::vector<IIntegerIdentifiable*> _defaultRenderers;
 
 	public:
 
@@ -31,7 +33,7 @@ namespace room::client::win::core
 		OpenGLEvents GetOpenGLEvents();
 
 		bool AddDefaultRenderer(IRenderer* renderer);
-		std::vector<IRenderer*> GetDefaultRenderers();
+		std::vector<IIntegerIdentifiable*> GetDefaultRenderers();
 
 	};
 

@@ -46,6 +46,21 @@
     <Filter Include="Source Files\attributes">
       <UniqueIdentifier>{afa3553b-5c05-4f67-9dda-9920bbde603e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\utilities">
+      <UniqueIdentifier>{8028ae33-623c-4ca0-a7a4-e793ec68dc9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utilities">
+      <UniqueIdentifier>{2fda19b2-8edc-44c3-9f12-ece3db19dcc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\collisions">
+      <UniqueIdentifier>{fb3203cc-64ac-4df9-bdc8-3b6a3dc4b103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\collisions">
+      <UniqueIdentifier>{7bca0cba-02a8-40ac-a2af-cae1656048a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures">
+      <UniqueIdentifier>{7493c7b2-1595-4076-a4bc-468e890570ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -81,8 +96,20 @@
     <ClCompile Include="OpenGLPosition.cpp">
       <Filter>Source Files\attributes</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLUtils.cpp">
-      <Filter>Source Files\core</Filter>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Source Files\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GLfloatUtils.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="IdentifierUtils.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollision.cpp">
+      <Filter>Source Files\collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageRenderer.cpp">
+      <Filter>Source Files\renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,8 +173,48 @@
     <ClInclude Include="ISceneManager.h">
       <Filter>Header Files\managers</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLUtils.h">
-      <Filter>Header Files\core</Filter>
+    <ClInclude Include="ICollisionManager.h">
+      <Filter>Header Files\managers</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Header Files\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="IIntegerIdentifiable.h">
+      <Filter>Header Files\attributes</Filter>
+    </ClInclude>
+    <ClInclude Include="GLfloatUtils.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="IdentifierUtils.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollision.h">
+      <Filter>Header Files\collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Collisions.h">
+      <Filter>Header Files\collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollision.h">
+      <Filter>Header Files\collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageRenderer.h">
+      <Filter>Header Files\renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="room.client.win.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bricks.PNG">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

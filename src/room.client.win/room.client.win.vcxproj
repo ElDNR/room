@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\soil.1.16.0\build\native\soil.props" Condition="Exists('..\packages\soil.1.16.0\build\native\soil.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -112,6 +113,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseRenderer.cpp" />
+    <ClCompile Include="BoxCollision.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="IdentifierUtils.cpp" />
+    <ClCompile Include="ImageRenderer.cpp" />
     <ClCompile Include="IRenderer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGLColor.cpp" />
@@ -119,7 +124,7 @@
     <ClCompile Include="OpenGLManager.cpp" />
     <ClCompile Include="OpenGLOptions.cpp" />
     <ClCompile Include="OpenGLPosition.cpp" />
-    <ClCompile Include="OpenGLUtils.cpp" />
+    <ClCompile Include="GLfloatUtils.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="SquareRenderer.cpp" />
@@ -146,7 +151,15 @@
   <ItemGroup>
     <ClInclude Include="Attributes.h" />
     <ClInclude Include="BaseRenderer.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Collisions.h" />
+    <ClInclude Include="BoxCollision.h" />
+    <ClInclude Include="ICollisionManager.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="ICollision.h" />
+    <ClInclude Include="IdentifierUtils.h" />
+    <ClInclude Include="IIntegerIdentifiable.h" />
+    <ClInclude Include="ImageRenderer.h" />
     <ClInclude Include="IOpenGLManager.h" />
     <ClInclude Include="ISceneManager.h" />
     <ClInclude Include="OpenGLColor.h" />
@@ -156,17 +169,27 @@
     <ClInclude Include="IRenderer.h" />
     <ClInclude Include="OpenGLOptions.h" />
     <ClInclude Include="OpenGLPosition.h" />
-    <ClInclude Include="OpenGLUtils.h" />
+    <ClInclude Include="GLfloatUtils.h" />
     <ClInclude Include="Renderers.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="SquareRenderer.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\room.client\room.client.vcxproj">
       <Project>{bd315652-0b53-4167-b84f-c40af0583e2f}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="room.client.win.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bricks.PNG">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
@@ -179,5 +202,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets'))" />
     <Error Condition="!Exists('..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets'))" />
+    <Error Condition="!Exists('..\packages\soil.1.16.0\build\native\soil.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\soil.1.16.0\build\native\soil.props'))" />
   </Target>
 </Project>
