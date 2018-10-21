@@ -4,6 +4,7 @@ using namespace room::client::win::renderers;
 
 BaseRenderer::BaseRenderer()
 {
+	this->_initialized = false;
 	this->_color.SetColor(0, 0, 0, 0);
 }
 
@@ -14,12 +15,9 @@ BaseRenderer::~BaseRenderer()
 
 void BaseRenderer::DisplayFunc(void)
 {
-	/*  clear all pixels  */
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	this->_color.DisplayColor();
-
-	this->Display();
+	if (_initialized) {
+		this->Display();
+	}
 }
 
 void BaseRenderer::DrawVertex3f(GLfloat x, GLfloat y, GLfloat z)

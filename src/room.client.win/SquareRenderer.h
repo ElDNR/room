@@ -6,7 +6,7 @@
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 
-#include "IRenderer.h"
+#include "BaseRenderer.h"
 
 namespace room::client::win::renderers
 {
@@ -20,6 +20,7 @@ namespace room::client::win::renderers
 		~SquareRenderer(void);
 
 		int GetId(void) const;
+		bool Initialize(void);
 		void Display(void);
 		void KeyboardFunc(unsigned char key, int x, int y);
 		void MouseFunc(int button, int state, int x, int y);

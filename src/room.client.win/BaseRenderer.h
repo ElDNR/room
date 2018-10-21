@@ -22,6 +22,7 @@ namespace room::client::win::renderers
 
 	protected:
 
+		bool _initialized;
 		OpenGLColor _color;
 		OpenGLPosition _position;
 
@@ -39,6 +40,8 @@ namespace room::client::win::renderers
 		void DisplayFunc(void);
 
 		virtual int GetId(void) const = 0;
+		virtual bool Initialize(void) = 0;
+
 		virtual void KeyboardFunc(unsigned char key, int x, int y) = 0;
 		virtual void MouseFunc(int button, int state, int x, int y) = 0;
 		virtual void MotionFunc(int x, int y) = 0;
