@@ -7,7 +7,7 @@
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 
-namespace room::client::win::core
+namespace room::client::win::utilities
 {
 
 	/// <summary>
