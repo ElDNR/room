@@ -1,0 +1,7 @@
+﻿Entity Framework Core Commands:
+
+# Update models:
+
+Scaffold-DbContext "Server=DIEGONUNEZ-PC\SQLEXPRESS;Database=Room;Trusted_Connection=True;User ID=RoomManager;Password=roomManagerPassword" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force
+
+#
