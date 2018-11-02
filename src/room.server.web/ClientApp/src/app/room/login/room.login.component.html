@@ -1,0 +1,10 @@
+<h1>Room Login</h1>
+<form (submit)="submitLogin()">
+  <div><b>Username:</b></div>
+  <div><input name="userName" type="text" required="required" [(ngModel)]="User.UserName" /></div>
+  <br />
+  <div><b>Password:</b></div>
+  <div><input name="password" type="password" required="required" [(ngModel)]="User.Password" /></div>
+  <br />
+  <div><input type="submit" value="Login" /></div>
+</form>

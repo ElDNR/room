@@ -10,6 +10,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <Authors>Diego Nunez</Authors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +27,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\app-routing.module.ts" />
+    <None Remove="ClientApp\src\app\room\dashboard\room.dashboard.component.ts" />
+    <None Remove="ClientApp\src\app\room\room-routing.module.ts" />
+    <None Remove="ClientApp\src\app\room\room.login.component.ts" />
+    <None Remove="ClientApp\src\app\room\room.module.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\room.server.dataaccess\room.server.dataaccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\room.dashboard.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\room\login\room.login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\room\room-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\room\room.module.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\error\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

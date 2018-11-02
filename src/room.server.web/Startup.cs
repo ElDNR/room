@@ -8,76 +8,89 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using room.server.data.Models;
+using System;
 
 namespace room.server.web
 {
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
 
-        public IConfiguration Configuration { get; }
+	/// <summary>
+	/// 
+	/// </summary>
+	public class Startup
+	{
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.Strict;
+		public Startup(IConfiguration configuration)
+		{
+			Configuration = configuration;
+		}
 
-            });
+		public IConfiguration Configuration { get; }
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
+			services.AddDistributedMemoryCache();
+			services.AddSession(options =>
+			{
+				options.IdleTimeout = TimeSpan.FromMinutes(1);
+			});
 
-            // Dependency Injection
-            services.AddDbContext<RoomContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RoomDatabase")));
+			services.Configure<CookiePolicyOptions>(options =>
+			{
+				options.CheckConsentNeeded = context => true;
+				options.MinimumSameSitePolicy = SameSiteMode.Strict;
+			});
 
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
-        }
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
-            }
+			// Dependency Injection
+			services.AddDbContext<RoomContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RoomDatabase")));
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+			// In production, the Angular files will be served from this directory
+			services.AddSpaStaticFiles(configuration =>
+			{
+				configuration.RootPath = "ClientApp/dist";
+			});
+		}
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		{
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+			}
+			else
+			{
+				app.UseExceptionHandler("/Error");
+				app.UseHsts();
+			}
 
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
+			app.UseSession();
+			app.UseHttpsRedirection();
+			app.UseStaticFiles();
+			app.UseSpaStaticFiles();
 
-                spa.Options.SourcePath = "ClientApp";
+			app.UseMvc(routes =>
+			{
+				routes.MapRoute(name: "default",
+					template: "{controller}/{action=Index}/{id?}");
+			});
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
-        }
-    }
+			app.UseSpa(spa =>
+			{
+				// To learn more about options for serving an Angular SPA from ASP.NET Core,
+				// see https://go.microsoft.com/fwlink/?linkid=864501
+
+				spa.Options.SourcePath = "ClientApp";
+
+				if (env.IsDevelopment())
+				{
+					spa.UseAngularCliServer(npmScript: "start");
+				}
+			});
+		}
+
+	}
+
 }
