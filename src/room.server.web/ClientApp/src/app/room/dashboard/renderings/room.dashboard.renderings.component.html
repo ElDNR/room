@@ -1,0 +1,23 @@
+<h1>Renderings</h1>
+<div>
+  <span><a [routerLink]='["/room/dashboard"]'>Dashboard</a>/Renderings</span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Edit&nbsp;(<a>Add</a>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rendering of Renderings">
+      <td>{{rendering.name}}</td>
+      <td>{{rendering.type}}</td>
+      <td><a [routerLink]='["/room/dashboard/renderings/edit", rendering.id]'>Edit</a></td>
+    </tr>
+    <tr *ngIf="ShowNoRenderingsMessage">
+      <td colspan="3">There are currently no renderings available, please use the add button.</td>
+    </tr>
+  </tbody>
+</table>
