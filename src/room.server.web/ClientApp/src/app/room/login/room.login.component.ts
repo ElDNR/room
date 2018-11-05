@@ -24,7 +24,6 @@ export class RoomLoginComponent {
     this.Http
       .post(this.BaseUrl + 'api/Room/Login', this.User)
       .subscribe(result => {
-        window.location.href = this.BaseUrl + 'room/dashboard';
         this.Router.navigate(['/room/dashboard']);
       }, error => console.error(error));
   }
