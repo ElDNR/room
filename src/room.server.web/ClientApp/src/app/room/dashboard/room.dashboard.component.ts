@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RoomDashboardAuthenticator } from './room.dashboard.authenticator';
 
 @Component({
   selector: 'app-roomdashboard',
@@ -18,15 +19,15 @@ export class RoomDashboardComponent implements OnInit {
     this.BaseUrl = baseUrl;
   }
 
-  protected ngOnInit() {
-    // Check if authorized.
-    this.Http
-      .get(this.BaseUrl + 'api/Room/LoggedIn')
-      .subscribe(result => {
-        if (result == false) {
-          this.Router.navigate(['/room']);
-        }
-      }, error => console.error(error));
+  public ngOnInit() {
+    var _self = this;
+
+    var authenticator: RoomDashboardAuthenticator = new RoomDashboardAuthenticator(this.Http, this.BaseUrl);
+    authenticator.authenticate(function () {
+      console.log("RoomDashboardComponent authenticated.");
+    }, function () {
+      _self.Router.navigate(['/room']);
+    });
   }
 
 }
