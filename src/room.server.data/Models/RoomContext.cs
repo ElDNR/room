@@ -24,11 +24,6 @@ namespace room.server.data.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DIEGONUNEZ-PC\\SQLEXPRESS;Database=Room;Trusted_Connection=True;User ID=RoomManager;Password=roomManagerPassword");
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,6 +34,11 @@ namespace room.server.data.Models
 
                 entity.Property(e => e.Datasource)
                     .HasColumnName("datasource")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
                     .HasMaxLength(50)
                     .IsUnicode(false);
 

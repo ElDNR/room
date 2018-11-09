@@ -16,6 +16,7 @@ namespace room.server.data.Models
         public int Renderingtypeid { get; set; }
         public int Spaceid { get; set; }
         public int Renderinglinkid { get; set; }
+        public string Name { get; set; }
         public string Datasource { get; set; }
 
         public RenderingLink Renderinglink { get; set; }
