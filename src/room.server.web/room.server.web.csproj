@@ -32,6 +32,7 @@
     <None Remove="ClientApp\src\app\room\dashboard\renderings\room.dashboard.renderings.edit.component.ts" />
     <None Remove="ClientApp\src\app\room\dashboard\renderingtypes\room.dashboard.renderingtypes.component.ts" />
     <None Remove="ClientApp\src\app\room\dashboard\renderingtypes\room.dashboard.renderingtypes.edit.component.ts" />
+    <None Remove="ClientApp\src\app\room\dashboard\room.dashboard.authenticator.component.ts" />
     <None Remove="ClientApp\src\app\room\dashboard\room.dashboard.authenticator.ts" />
     <None Remove="ClientApp\src\app\room\dashboard\room.dashboard.component.ts" />
     <None Remove="ClientApp\src\app\room\dashboard\scenes\room.dashboard.scenes.component.ts" />
@@ -51,6 +52,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\renderings\room.dashboard.renderings.edit.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\renderingtypes\room.dashboard.renderingtypes.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\renderingtypes\room.dashboard.renderingtypes.edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\room.dashboard.authenticator.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\room.dashboard.authenticator.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\room.dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\room\dashboard\scenes\room.dashboard.scenes.component.ts" />
