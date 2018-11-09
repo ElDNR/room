@@ -1,33 +1,21 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { RoomDashboardAuthenticator } from './room.dashboard.authenticator';
+
+import { RoomDashboardAuthenticatorComponent } from './room.dashboard.authenticator.component';
 
 @Component({
   selector: 'app-roomdashboard',
   templateUrl: './room.dashboard.component.html'
 })
-export class RoomDashboardComponent implements OnInit {
-
-  private Router: Router;
-  private Http: HttpClient;
-  private BaseUrl: string;
+export class RoomDashboardComponent extends RoomDashboardAuthenticatorComponent {
 
   constructor(router: Router, http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.Router = router;
-    this.Http = http;
-    this.BaseUrl = baseUrl;
+    super(router, http, baseUrl);
   }
 
-  public ngOnInit() {
-    var _self = this;
-
-    var authenticator: RoomDashboardAuthenticator = new RoomDashboardAuthenticator(this.Http, this.BaseUrl);
-    authenticator.authenticate(function () {
-      console.log("RoomDashboardComponent authenticated.");
-    }, function () {
-      _self.Router.navigate(['/room']);
-    });
+  protected onInit(): void {
+    console.log("RoomDashboardComponent authenticated.");
   }
 
 }

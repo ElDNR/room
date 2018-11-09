@@ -1,10 +1,20 @@
 <h1>Room Login</h1>
-<form (submit)="submitLogin()">
-  <div><b>Username:</b></div>
-  <div><input name="userName" type="text" required="required" [(ngModel)]="User.UserName" /></div>
+<form (submit)="submitLogin()" ngNativeValidate>
+  <div>
+    <b>Username:</b>
+  </div>
+  <div>
+    <input name="userName" type="text" required="required" [(ngModel)]="User.UserName" title="Please provide a user name." />
+  </div>
   <br />
-  <div><b>Password:</b></div>
-  <div><input name="password" type="password" required="required" [(ngModel)]="User.Password" /></div>
+  <div>
+    <b>Password:</b>
+  </div>
+  <div>
+    <input name="password" type="password" required="required" [(ngModel)]="User.Password" title="Please provide a corresponding password." />
+  </div>
   <br />
-  <div><input type="submit" value="Login" /></div>
+  <div>
+    <input type="submit" value="Login" />
+  </div>
 </form>

@@ -3,31 +3,25 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RoomDashboardAuthenticator } from '../room.dashboard.authenticator';
 
+import { RoomDashboardAuthenticatorComponent } from '../room.dashboard.authenticator.component';
+
 @Component({
   selector: 'app-roomdashboardrenderingtypes',
   templateUrl: './room.dashboard.renderingtypes.component.html'
 })
-export class RoomDashboardRenderingTypesComponent implements OnInit {
+export class RoomDashboardRenderingTypesComponent extends RoomDashboardAuthenticatorComponent {
 
-  private Router: Router;
-  private Http: HttpClient;
-  private BaseUrl: string;
+  public RenderingTypes = [];
+  public ShowNoRenderingTypesMessage: boolean = false;
 
   constructor(router: Router, http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.Router = router;
-    this.Http = http;
-    this.BaseUrl = baseUrl;
+    super(router, http, baseUrl);
   }
 
-  public ngOnInit() {
-    var _self = this;
+  protected onInit(): void {
+    console.log("RoomDashboardRenderingsTypesComponent authenticated.");
 
-    var authenticator: RoomDashboardAuthenticator = new RoomDashboardAuthenticator(this.Http, this.BaseUrl);
-    authenticator.authenticate(function () {
-      console.log("RoomDashboardRenderingsTypesComponent authenticated.");
-    }, function () {
-      _self.Router.navigate(['/room']);
-    });
+    this.ShowNoRenderingTypesMessage = true;
   }
 
 }

@@ -2,3 +2,22 @@
 <div>
   <span><a [routerLink]='["/room/dashboard"]'>Dashboard</a>/<a [routerLink]='["/room/dashboard/renderingtypes"]'>Rendering Types</a>/Edit</span>
 </div>
+<form (submit)="submitEdit()" ngNativeValidate>
+  <div>
+    <b>Name:</b>
+  </div>
+  <div>
+    <input name="name" type="text" required="required" [(ngModel)]="RenderingType.Name" title="Please provide a name for reference." />
+  </div>
+  <br />
+  <div>
+    <b>Handler:</b>
+  </div>
+  <div>
+    <input name="handler" type="text" required="required" [(ngModel)]="RenderingType.Handler" title="Please provide a handler for data." />
+  </div>
+  <br />
+  <div>
+    <input type="submit" value="Save" />
+  </div>
+</form>

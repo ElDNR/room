@@ -2,3 +2,22 @@
 <div>
   <span><a [routerLink]='["/room/dashboard"]'>Dashboard</a>/Rendering Types</span>
 </div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Handler</th>
+      <th>Edit&nbsp;(<a [routerLink]='["/room/dashboard/renderingtypes/edit", "add"]'>Add</a>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let renderingType of RenderingTypes">
+      <td>{{renderingType.name}}</td>
+      <td>{{renderingType.handler}}</td>
+      <td><a [routerLink]='["/room/dashboard/renderingtypes/edit", renderingType.id]'>Edit</a></td>
+    </tr>
+    <tr *ngIf="ShowNoRenderingTypesMessage">
+      <td colspan="3">There are currently no rendering types available, please use the add button.</td>
+    </tr>
+  </tbody>
+</table>
