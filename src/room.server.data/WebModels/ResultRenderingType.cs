@@ -5,11 +5,11 @@ using System.Text;
 namespace room.server.data.WebModels
 {
 
-	public class User
+	public class ResultRenderingType
 	{
 
-		public string UserName { get; set; }
-		public string Password { get; set; }
+		public string Name { get; set; }
+		public string Handler { get; set; }
 
 	}
 
