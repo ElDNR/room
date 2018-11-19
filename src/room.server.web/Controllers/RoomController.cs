@@ -19,7 +19,7 @@ namespace room.server.web.Controllers
 		}
 
 		[HttpPost("[action]")]
-		public bool Login([FromBody] User user)
+		public bool Login([FromBody] RoomUser user)
 		{
 			bool result;
 			if(null != user && null != user.UserName && user.UserName.Length > 0)
