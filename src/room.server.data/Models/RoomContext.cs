@@ -15,6 +15,7 @@ namespace room.server.data.Models
         {
         }
 
+        public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Rendering> Rendering { get; set; }
         public virtual DbSet<RenderingLink> RenderingLink { get; set; }
         public virtual DbSet<RenderingType> RenderingType { get; set; }
@@ -22,15 +23,31 @@ namespace room.server.data.Models
         public virtual DbSet<SceneRenderingLink> SceneRenderingLink { get; set; }
         public virtual DbSet<Space> Space { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Color>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Alpha).HasColumnName("alpha");
+
+                entity.Property(e => e.Blue).HasColumnName("blue");
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("description")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Green).HasColumnName("green");
+
+                entity.Property(e => e.Red).HasColumnName("red");
+            });
+
             modelBuilder.Entity<Rendering>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Colorid).HasColumnName("colorid");
 
                 entity.Property(e => e.Datasource)
                     .HasColumnName("datasource")
@@ -47,6 +64,12 @@ namespace room.server.data.Models
                 entity.Property(e => e.Renderingtypeid).HasColumnName("renderingtypeid");
 
                 entity.Property(e => e.Spaceid).HasColumnName("spaceid");
+
+                entity.HasOne(d => d.Color)
+                    .WithMany(p => p.Rendering)
+                    .HasForeignKey(d => d.Colorid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Rendering_Color");
 
                 entity.HasOne(d => d.Renderinglink)
                     .WithMany(p => p.Rendering)

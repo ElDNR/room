@@ -15,10 +15,12 @@ namespace room.server.data.Models
         public int Id { get; set; }
         public int Renderingtypeid { get; set; }
         public int Spaceid { get; set; }
+        public int Colorid { get; set; }
         public int Renderinglinkid { get; set; }
         public string Name { get; set; }
         public string Datasource { get; set; }
 
+        public Color Color { get; set; }
         public RenderingLink Renderinglink { get; set; }
         public RenderingType Renderingtype { get; set; }
         public Space Space { get; set; }
