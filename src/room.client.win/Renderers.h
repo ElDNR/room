@@ -7,6 +7,7 @@
 #include "BaseRenderer.h"
 #include "SquareRenderer.h"
 #include "ImageRenderer.h"
+#include "SimpleAlphaTextRenderer.h"
 
 #endif // !_ROOMCLIENTWIN_RENDERERS_H_
 

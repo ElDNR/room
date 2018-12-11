@@ -61,13 +61,28 @@
     <Filter Include="Resource Files\textures">
       <UniqueIdentifier>{7493c7b2-1595-4076-a4bc-468e890570ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\renderers\menu">
+      <UniqueIdentifier>{476d67a5-3190-4a07-8ef7-d287335001b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\renderers\shape">
+      <UniqueIdentifier>{abca6e74-1429-4bf8-8535-a23fa8399667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\renderers\media">
+      <UniqueIdentifier>{8c19f120-9a4a-4220-bec5-c47134c55734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderers\menu">
+      <UniqueIdentifier>{7617b966-f0ad-4271-94e0-d555039418eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderers\shape">
+      <UniqueIdentifier>{a1198322-8f35-440e-bd78-edced05178c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\renderers\media">
+      <UniqueIdentifier>{1aae976d-161c-4589-861a-f193248bfc68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SquareRenderer.cpp">
-      <Filter>Source Files\renderers</Filter>
     </ClCompile>
     <ClCompile Include="IRenderer.cpp">
       <Filter>Source Files\renderers</Filter>
@@ -109,7 +124,13 @@
       <Filter>Source Files\collisions</Filter>
     </ClCompile>
     <ClCompile Include="ImageRenderer.cpp">
-      <Filter>Source Files\renderers</Filter>
+      <Filter>Source Files\renderers\media</Filter>
+    </ClCompile>
+    <ClCompile Include="SquareRenderer.cpp">
+      <Filter>Source Files\renderers\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleAlphaTextRenderer.cpp">
+      <Filter>Source Files\renderers\menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +143,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SquareRenderer.h">
-      <Filter>Header Files\renderers</Filter>
-    </ClInclude>
     <ClInclude Include="IRenderer.h">
       <Filter>Header Files\renderers</Filter>
     </ClInclude>
@@ -200,11 +218,23 @@
     <ClInclude Include="BoxCollision.h">
       <Filter>Header Files\collisions</Filter>
     </ClInclude>
-    <ClInclude Include="ImageRenderer.h">
-      <Filter>Header Files\renderers</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonRenderer.h">
+      <Filter>Header Files\renderers\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuRenderer.h">
+      <Filter>Header Files\renderers\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageRenderer.h">
+      <Filter>Header Files\renderers\media</Filter>
+    </ClInclude>
+    <ClInclude Include="SquareRenderer.h">
+      <Filter>Header Files\renderers\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAlphaTextRenderer.h">
+      <Filter>Header Files\renderers\menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

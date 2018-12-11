@@ -128,6 +128,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="SquareRenderer.cpp" />
+    <ClCompile Include="SimpleAlphaTextRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Fragment_Shader.glsl">
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Attributes.h" />
     <ClInclude Include="BaseRenderer.h" />
+    <ClInclude Include="ButtonRenderer.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="BoxCollision.h" />
@@ -162,6 +164,7 @@
     <ClInclude Include="ImageRenderer.h" />
     <ClInclude Include="IOpenGLManager.h" />
     <ClInclude Include="ISceneManager.h" />
+    <ClInclude Include="MenuRenderer.h" />
     <ClInclude Include="OpenGLColor.h" />
     <ClInclude Include="Managers.h" />
     <ClInclude Include="OpenGLEvents.h" />
@@ -176,6 +179,7 @@
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="SquareRenderer.h" />
+    <ClInclude Include="SimpleAlphaTextRenderer.h" />
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
