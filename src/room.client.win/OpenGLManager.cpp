@@ -5,7 +5,12 @@ using namespace room::client::win::managers;
 
 OpenGLManager::OpenGLManager() {}
 
-OpenGLManager::~OpenGLManager() {}
+OpenGLManager::~OpenGLManager() {
+	if(NULL != this->_sceneManager)
+	{
+		delete this->_sceneManager;
+	}
+}
 
 int OpenGLManager::Load(OpenGLOptions* openGLOptions) {
 	if (_openGLInitialized) {

@@ -17,6 +17,11 @@ SceneManager::SceneManager() {
 }
 
 SceneManager::~SceneManager() {
+	for (int i = 0, size = _renderers.size(); i < size; i++)
+	{
+		delete _renderers[i];
+	}
+
 	this->_renderers.clear();
 }
 

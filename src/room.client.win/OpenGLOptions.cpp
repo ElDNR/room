@@ -14,6 +14,11 @@ OpenGLOptions::OpenGLOptions(int* argc, char** argv)
 
 OpenGLOptions::~OpenGLOptions()
 {
+	for (int i = 0, size = _defaultRenderers.size(); i < size; i++)
+	{
+		delete _defaultRenderers[i];
+	}
+
 	_defaultRenderers.clear();
 }
 

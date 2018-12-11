@@ -24,8 +24,8 @@ namespace room::client::win::managers
 
 	private:
 
-		bool _openGLInitialized;
-		ISceneManager* _sceneManager;
+		bool _openGLInitialized = false;
+		ISceneManager* _sceneManager = NULL;
 
 	public:
 

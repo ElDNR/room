@@ -7,7 +7,7 @@ ImageRenderer::ImageRenderer() {
 }
 
 ImageRenderer::~ImageRenderer() {
-
+	glDeleteTextures(1, &this->_imageTextureID);
 }
 
 int ImageRenderer::GetId(void) const {
