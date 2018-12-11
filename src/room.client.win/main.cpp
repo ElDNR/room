@@ -27,19 +27,20 @@ int main(int argc, char **argv) {
 		OpenGLOptions* openGLOptions = new OpenGLOptions(&argc, argv);
 		IRenderer* defaultRenderer = new SquareRenderer();
 		IRenderer* imageRenderer = new ImageRenderer();
+		IRenderer* textRenderer = new SimpleAlphaTextRenderer();
 
 		openGLEvents.setDisplayFuncEventHandler(OpenGLLoader_RenderCallback);
 		openGLEvents.setIdleFuncEventHandler(OpenGLLoader_IdleCallback);
 		openGLEvents.setMouseFuncEventHandler(OpenGLLoader_MouseCallback);
 
 		openGLOptions->SetOpenGLEvents(openGLEvents);
+
+		openGLOptions->AddDefaultRenderer(textRenderer);
 		openGLOptions->AddDefaultRenderer(defaultRenderer);
 		openGLOptions->AddDefaultRenderer(imageRenderer);
 
 		result = _openGLManager->Load(openGLOptions);
 
-		delete defaultRenderer;
-		delete imageRenderer;
 		delete openGLOptions;
 	}
 
