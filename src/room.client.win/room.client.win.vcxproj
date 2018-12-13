@@ -115,6 +115,7 @@
     <ClCompile Include="BaseRenderer.cpp" />
     <ClCompile Include="BoxCollision.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="GLfloatSquareArrayWrapper.cpp" />
     <ClCompile Include="IdentifierUtils.cpp" />
     <ClCompile Include="ImageRenderer.cpp" />
     <ClCompile Include="IRenderer.cpp" />
@@ -151,6 +152,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GLfloatSquareArrayWrapper.h" />
     <ClInclude Include="Attributes.h" />
     <ClInclude Include="BaseRenderer.h" />
     <ClInclude Include="ButtonRenderer.h" />

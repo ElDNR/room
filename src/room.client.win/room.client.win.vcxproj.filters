@@ -135,6 +135,9 @@
     <ClCompile Include="SimpleCamera.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
+    <ClCompile Include="GLfloatSquareArrayWrapper.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -243,6 +246,9 @@
       <Filter>Header Files\core</Filter>
     </ClInclude>
     <ClInclude Include="SimpleCamera.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="GLfloatSquareArrayWrapper.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
