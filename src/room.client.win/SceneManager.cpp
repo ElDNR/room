@@ -1,9 +1,11 @@
 #include "SceneManager.h"
+#include "SimpleCamera.h"
 
 using namespace room::client::win;
 using namespace room::client::win::renderers;
 using namespace room::client::win::managers;
 using namespace room::client::win::attributes;
+using namespace room::client::win::core;
 
 // Constructors
 
@@ -13,10 +15,14 @@ SceneManager::SceneManager() {
 	this->_backgroundBlue = 0.0;
 	this->_backgroundAlpha = 1.0;
 
+	this->_camera = new SimpleCamera(800, 600);
+
 	time(&this->_lastIdleTime);
 }
 
 SceneManager::~SceneManager() {
+	delete this->_camera;
+
 	for (int i = 0, size = _renderers.size(); i < size; i++)
 	{
 		delete _renderers[i];
@@ -82,11 +88,11 @@ void SceneManager::ProcessDisplay(void) {
 	std::vector<IIntegerIdentifiable*> defaultRenderers = _openGLOptions->GetDefaultRenderers();
 
 	for (int i = 0, size = _openGLOptions->GetDefaultRenderers().size(); i < size; i++) {
-		((IRenderer*)defaultRenderers[i])->DisplayFunc();
+		((IRenderer*)defaultRenderers[i])->DisplayFunc(this->_camera);
 	}
 
 	for (int i = 0, size = this->_renderers.size(); i < size; i++) {
-		((IRenderer*)this->_renderers[i])->DisplayFunc();
+		((IRenderer*)this->_renderers[i])->DisplayFunc(this->_camera);
 	}
 
 	glutSwapBuffers();
@@ -97,14 +103,41 @@ void SceneManager::ProcessDisplay(void) {
 void SceneManager::ProcessKeyboard(unsigned char key, int x, int y) {
 	std::vector<IIntegerIdentifiable*> defaultRenderers = _openGLOptions->GetDefaultRenderers();
 
-	for (int i = 0, size = _openGLOptions->GetDefaultRenderers().size(); i < size; i++) {
-		((IRenderer*)defaultRenderers[i])->KeyboardFunc(key, x, y);
+	switch (key) {
+	case 'W':
+		this->_camera->IncrementZ();
+		break;
+	case 'w':
+		this->_camera->IncrementY();
+		break;
+	case 'A':
+	case 'a':
+		this->_camera->DecrementX();
+		break;
+	case 'S':
+		this->_camera->DecrementZ();
+		break;
+	case 's':
+		this->_camera->DecrementY();
+		break;
+	case 'D':
+	case 'd':
+		this->_camera->IncrementX();
+		break;
+	default:
+		for (int i = 0, size = _openGLOptions->GetDefaultRenderers().size(); i < size; i++) {
+			((IRenderer*)defaultRenderers[i])->KeyboardFunc(key, x, y);
+		}
+
+		for (int i = 0, size = this->_renderers.size(); i < size; i++)
+		{
+			((IRenderer*)this->_renderers[i])->KeyboardFunc(key, x, y);
+		}
+
+		break;
 	}
 
-	for (int i = 0, size = this->_renderers.size(); i < size; i++)
-	{
-		((IRenderer*)this->_renderers[i])->KeyboardFunc(key, x, y);
-	}
+	glutPostRedisplay();
 }
 
 void SceneManager::ProcessMouse(int button, int state, int x, int y) {
@@ -135,7 +168,7 @@ void SceneManager::ProcessMotion(int x, int y) {
 
 void SceneManager::ProcessIdle() {
 	// TODO: Launch a worker thread, and make the main thread go to sleep.
-	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	std::this_thread::sleep_for(std::chrono::milliseconds(125));
 
 	time_t currentTime = time(NULL);
 	std::vector<IIntegerIdentifiable*> defaultRenderers = _openGLOptions->GetDefaultRenderers();

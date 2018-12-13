@@ -127,6 +127,7 @@
     <ClCompile Include="GLfloatUtils.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
+    <ClCompile Include="SimpleCamera.cpp" />
     <ClCompile Include="SquareRenderer.cpp" />
     <ClCompile Include="SimpleAlphaTextRenderer.cpp" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="BoxCollision.h" />
+    <ClInclude Include="ICamera.h" />
     <ClInclude Include="ICollisionManager.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="ICollision.h" />
@@ -178,6 +180,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Shaders.h" />
+    <ClInclude Include="SimpleCamera.h" />
     <ClInclude Include="SquareRenderer.h" />
     <ClInclude Include="SimpleAlphaTextRenderer.h" />
     <ClInclude Include="Utilities.h" />

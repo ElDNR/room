@@ -2,14 +2,7 @@
 
 using namespace room::client::win::attributes;
 
-OpenGLPosition::OpenGLPosition(void)
-{
-	this->SetPosition(0, 0, 0);
-
-	this->SetMinBounds(0, 0, 0);
-
-	this->SetMaxBounds(0, 0, 0);
-}
+OpenGLPosition::OpenGLPosition(void) {}
 
 OpenGLPosition::~OpenGLPosition(void) {}
 
@@ -25,6 +18,8 @@ void OpenGLPosition::SetMinBounds(GLfloat x, GLfloat y, GLfloat z)
 	this->_minX = x;
 	this->_minY = y;
 	this->_minZ = z;
+
+	this->_hasBounds = true;
 }
 
 void OpenGLPosition::SetMaxBounds(GLfloat x, GLfloat y, GLfloat z)
@@ -32,6 +27,8 @@ void OpenGLPosition::SetMaxBounds(GLfloat x, GLfloat y, GLfloat z)
 	this->_maxX = x;
 	this->_minY = y;
 	this->_minZ = z;
+
+	this->_hasBounds = true;
 }
 
 GLfloat OpenGLPosition::GetX(void)
@@ -54,10 +51,17 @@ bool OpenGLPosition::UpdateValue(GLfloat* valuePtr, GLfloat delta, GLfloat min, 
 	bool result;
 	GLfloat temp = *valuePtr + delta;
 
-	if (temp >= min && temp <= max)
+	if (!this->_hasBounds)
 	{
-		*valuePtr = temp;
 		result = true;
+
+		*valuePtr = temp;
+	}
+	else if (temp >= min && temp <= max)
+	{
+		result = true;
+
+		*valuePtr = temp;
 	}
 	else
 	{

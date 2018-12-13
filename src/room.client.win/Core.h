@@ -6,7 +6,9 @@
 #include <stdlib.h>
 #include <vector>
 
+#include "ICamera.h"
 #include "OpenGLEvents.h"
 #include "OpenGLOptions.h"
+#include "SimpleCamera.h"
 
 #endif // !_ROOMCLIENTWIN_CORE_H_

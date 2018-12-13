@@ -4,8 +4,10 @@
 #define _RENDERER_H_
 
 #include "Attributes.h"
+#include "ICamera.h"
 
 using namespace room::client::win::attributes;
+using namespace room::client::win::core;
 
 namespace room::client::win::renderers
 {
@@ -20,6 +22,8 @@ namespace room::client::win::renderers
 		virtual bool Initialize(void) = 0;
 
 		virtual void DisplayFunc(void) = 0;
+		virtual void DisplayFunc(ICamera* camera) = 0;
+
 		virtual void KeyboardFunc(unsigned char key, int x, int y) = 0;
 		virtual void MouseFunc(int button, int state, int x, int y) = 0;
 		virtual void MotionFunc(int x, int y) = 0;

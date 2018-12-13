@@ -10,9 +10,12 @@
 #include "GL\freeglut.h"
 
 #include "Attributes.h"
+#include "SimpleCamera.h"
+
 #include "IRenderer.h"
 
 using namespace room::client::win::attributes;
+using namespace room::client::win::core;
 
 namespace room::client::win::renderers
 {
@@ -28,9 +31,9 @@ namespace room::client::win::renderers
 
 		std::vector<IRenderer*> _children;
 
-		virtual void Display(void) = 0;
+		virtual void Display(ICamera* camera) = 0;
 
-		void DrawVertex3f(GLfloat x, GLfloat y, GLfloat z);
+		void DrawVertex3f(ICamera* camera, GLfloat x, GLfloat y, GLfloat z);
 
 	public:
 
@@ -38,6 +41,7 @@ namespace room::client::win::renderers
 		~BaseRenderer(void);
 
 		void DisplayFunc(void);
+		void DisplayFunc(ICamera* camera);
 
 		virtual int GetId(void) const = 0;
 		virtual bool Initialize(void) = 0;

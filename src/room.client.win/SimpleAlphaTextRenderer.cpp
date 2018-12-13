@@ -14,7 +14,7 @@ int SimpleAlphaTextRenderer::GetId() const {
 }
 
 bool SimpleAlphaTextRenderer::Initialize() {
-	this->_position.SetPosition(0.25f, 0.25f, 0.0f);
+	this->_position.SetPosition(300.0f, 300.0f, 0.0f);
 	this->_position.SetMaxBounds(0.4f, 0.4f, 0.0f);
 	this->_position.SetMinBounds(0.2f, 0.2f, 0.0f);
 
@@ -22,33 +22,33 @@ bool SimpleAlphaTextRenderer::Initialize() {
 	return true;
 }
 
-void SimpleAlphaTextRenderer::Display() {
+void SimpleAlphaTextRenderer::Display(ICamera* camera) {
 	this->_color.DisplayColor();
 
 	glBegin(GL_POLYGON);
 	{
-		this->DrawVertex3f(0.0f, 0.0f, 0.0f);
-		this->DrawVertex3f(0.01f, 0.0f, 0.0f);
-		this->DrawVertex3f(0.01f, 0.04f, 0.0f);
-		this->DrawVertex3f(0.0f, 0.04f, 0.0f);
+		this->DrawVertex3f(camera, 0.0f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 50.01f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 50.01f, 200.04f, 0.0f);
+		this->DrawVertex3f(camera, 0.0f, 200.04f, 0.0f);
 	}
 	glEnd();
 
 	glBegin(GL_POLYGON);
 	{
-		this->DrawVertex3f(0.01f, 0.0f, 0.0f);
-		this->DrawVertex3f(0.02f, 0.0f, 0.0f);
-		this->DrawVertex3f(0.02f, 0.01f, 0.0f);
-		this->DrawVertex3f(0.01f, 0.01f, 0.0f);
+		this->DrawVertex3f(camera, 50.01f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 100.02f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 100.02f, 50.01f, 0.0f);
+		this->DrawVertex3f(camera, 50.01f, 50.01f, 0.0f);
 	}
 	glEnd();
 
 	glBegin(GL_POLYGON);
 	{
-		this->DrawVertex3f(0.02f, 0.0f, 0.0f);
-		this->DrawVertex3f(0.03f, 0.0f, 0.0f);
-		this->DrawVertex3f(0.03f, 0.04f, 0.0f);
-		this->DrawVertex3f(0.02f, 0.04f, 0.0f);
+		this->DrawVertex3f(camera, 100.02f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 150.03f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 150.03f, 200.04f, 0.0f);
+		this->DrawVertex3f(camera, 100.02f, 200.04f, 0.0f);
 	}
 	glEnd();
 }

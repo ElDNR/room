@@ -7,8 +7,10 @@ using namespace room::client::win::managers;
 IOpenGLManager* _openGLManager = NULL;
 
 void OpenGLLoader_RenderCallback(void);
+void OpenGLLoader_KeyboardCallback(unsigned char key, int x, int y);
 void OpenGLLoader_MouseCallback(int button, int state, int x, int y);
 void OpenGLLoader_IdleCallback(void);
+
 
 /**
 *
@@ -32,6 +34,7 @@ int main(int argc, char **argv) {
 		openGLEvents.setDisplayFuncEventHandler(OpenGLLoader_RenderCallback);
 		openGLEvents.setIdleFuncEventHandler(OpenGLLoader_IdleCallback);
 		openGLEvents.setMouseFuncEventHandler(OpenGLLoader_MouseCallback);
+		openGLEvents.setKeyboardFuncEventHandler(OpenGLLoader_KeyboardCallback);
 
 		openGLOptions->SetOpenGLEvents(openGLEvents);
 
@@ -53,6 +56,10 @@ int main(int argc, char **argv) {
 
 void OpenGLLoader_RenderCallback() {
 	_openGLManager->DisplayFunc();
+}
+
+void OpenGLLoader_KeyboardCallback(unsigned char key, int x, int y) {
+	_openGLManager->KeyboardFunc(key, x, y);
 }
 
 void OpenGLLoader_MouseCallback(int button, int state, int x, int y) {

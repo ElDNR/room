@@ -132,6 +132,9 @@
     <ClCompile Include="SimpleAlphaTextRenderer.cpp">
       <Filter>Source Files\renderers\menu</Filter>
     </ClCompile>
+    <ClCompile Include="SimpleCamera.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -235,6 +238,12 @@
     </ClInclude>
     <ClInclude Include="SimpleAlphaTextRenderer.h">
       <Filter>Header Files\renderers\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ICamera.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleCamera.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

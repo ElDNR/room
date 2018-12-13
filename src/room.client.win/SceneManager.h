@@ -30,6 +30,8 @@ namespace room::client::win::managers
 
 		bool _initialized;
 
+		ICamera* _camera;
+
 		OpenGLOptions* _openGLOptions;
 		GLfloat _backgroundRed, _backgroundGreen, _backgroundBlue, _backgroundAlpha;
 

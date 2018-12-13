@@ -21,7 +21,7 @@ bool ImageRenderer::Initialize(void) {
 		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT);
 
 	this->_position.SetPosition(0.0f, 0.0f, 0.0f);
-	this->_position.SetMaxBounds(0.2f, 0.2f, 0.0f);
+	this->_position.SetMaxBounds(200.2f, 200.2f, 0.0f);
 	this->_position.SetMinBounds(0.0f, 0.0f, 0.0f);
 
 	if (this->_imageTextureID > 0)
@@ -36,7 +36,7 @@ bool ImageRenderer::Initialize(void) {
 	return true;
 }
 
-void ImageRenderer::Display(void) {
+void ImageRenderer::Display(ICamera* camera) {
 	this->_color.DisplayColor();
 
 	glEnable(GL_TEXTURE_2D);
@@ -49,16 +49,16 @@ void ImageRenderer::Display(void) {
 		// The container is a Square with sides 0.25% the window size, and the image will be drawn to
 		// fit 100% of the original image dimensions.
 		glTexCoord2f(0.0f, 0.0f);
-		this->DrawVertex3f(0.0f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 0.0f, 0.0f, 0.0f);
 
 		glTexCoord2f(0.0f, 1.0f);
-		this->DrawVertex3f(0.0f, 0.25f, 0.0f);
+		this->DrawVertex3f(camera, 0.0f, 250.25f, 0.0f);
 
 		glTexCoord2f(1.0f, 1.0f);
-		this->DrawVertex3f(0.25f, 0.25f, 0.0f);
+		this->DrawVertex3f(camera, 250.25f, 250.25f, 0.0f);
 
 		glTexCoord2f(1.0f, 0.0f);
-		this->DrawVertex3f(0.25f, 0.0f, 0.0f);
+		this->DrawVertex3f(camera, 250.25f, 0.0f, 0.0f);
 	}
 	glEnd();
 
@@ -71,7 +71,7 @@ void ImageRenderer::KeyboardFunc(unsigned char key, int x, int y) {
 
 void ImageRenderer::MouseFunc(int button, int state, int x, int y) {
 	// Testing the movement functionality.
-	this->_position.UpdateX(0.01f);
+	// this->_position.UpdateX(0.01f);
 }
 
 void ImageRenderer::MotionFunc(int x, int y) {
