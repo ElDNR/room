@@ -31,6 +31,7 @@ void SimpleCamera::IncrementZ(void) {
 	this->_position.UpdateZ(this->ZOOM_FORWARD_DELTA);
 
 	GLfloat zoomModifyer = this->_zoomModifyer + this->ZOOM_FORWARD_DELTA;
+
 	if (zoomModifyer > 0 && zoomModifyer <= 1) {
 		this->_zoomModifyer = zoomModifyer;
 	}
@@ -48,6 +49,7 @@ void SimpleCamera::DecrementZ(void) {
 	this->_position.UpdateZ(this->ZOOM_BACKWARDS_DELTA);
 
 	GLfloat zoomModifyer = this->_zoomModifyer + this->ZOOM_BACKWARDS_DELTA;
+
 	if (zoomModifyer > 0 && zoomModifyer <= 1) {
 		this->_zoomModifyer = zoomModifyer;
 	}
@@ -70,8 +72,10 @@ bool SimpleCamera::IsInFrame(GLfloat x, GLfloat y, GLfloat z) {
 }
 
 void SimpleCamera::DrawVertex3f(GLfloat x, GLfloat y, GLfloat z) {
-	GLfloat relativeX = ((x - this->_position.GetX()) / this->_width) * this->_zoomModifyer;
-	GLfloat relativeY = ((y - this->_position.GetY()) / this->_height) * this->_zoomModifyer;
+	GLfloat zoomDelta = (1.0f - this->_zoomModifyer) / 2.0f;
+
+	GLfloat relativeX = (((x - this->_position.GetX()) / this->_width) * this->_zoomModifyer) + zoomDelta;
+	GLfloat relativeY = (((y - this->_position.GetY()) / this->_height) * this->_zoomModifyer) + zoomDelta;
 	GLfloat relativeZ = z - this->_position.GetZ();
 
 	glVertex3f(relativeX, relativeY, relativeZ);

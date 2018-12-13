@@ -18,6 +18,7 @@ namespace room::client::win::core {
 
 		GLfloat _width = 0.0f;
 		GLfloat _height = 0.0f;
+
 		GLfloat _zoomModifyer = 1.0f;
 
 		OpenGLPosition _position;
